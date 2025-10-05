@@ -1,0 +1,28 @@
+<!-- 
+EXTENDS: This template inherits from base.html 
+It gets the entire structure and only replaces the blocks we define
+-->
+{% extends "base.html" %}
+
+<!-- 
+OVERRIDE TITLE BLOCK: Replace the default title with a specific one for this page
+-->
+{% block title %}Home - Book Tracker{% endblock %}
+
+<!-- 
+CONTENT BLOCK: This replaces the empty 'content' block in base.html
+-->
+{% block content %}
+<h1>Welcome to Book Tracker</h1>
+<p>Start tracking your reading journey!</p>
+
+<h2>My Books</h2>
+<ul>
+    <!-- TODO: We'll replace this static list with dynamic data tomorrow -->
+    <li>Sample Book 1 - To Read</li>
+    <li>Sample Book 2 - Completed</li>
+</ul>
+
+<!-- Using url_for() ensures our links never break even if routes change -->
+<a href="{{ url_for('contact') }}">Get in touch</a>
+{% endblock %}

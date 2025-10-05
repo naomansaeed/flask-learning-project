@@ -1,9 +1,10 @@
-# Import the Flask class from the flask module
-from flask import Flask
+# Import the Flask class from the flask module along with render_template class
+from flask import Flask, render_template
 
 # Create an instance of the Flask class. This is our WSGI application.
 # The __name__ argument is the name of the application's module. It helps Flask find resources (like templates and static files).
 app = Flask(__name__)
+app.secret_key = 'your-secret-key-here'  # Needed for future flash messages (error/success notifications)
 
 # The route() decorator tells Flask what URL should trigger the following function.
 # In this case, when a user visits the root URL (i.e., '/'), the home() function will run.
@@ -11,7 +12,10 @@ app = Flask(__name__)
 def home():
     # This function returns the response we want to send to the client (the browser).
     # Here, we are returning a string of HTML. Flask will automatically convert this string into an HTTP response.
-    return '<h1>Hello, PyMentor!</h1><p>My first Flask app is running!</p><p><a href="/status">Check server status</a></p><p><a href="/contact">Get in contact</a></p>'
+
+    # render_template() is a Flask function that looks in the 'templates' folder
+    # It processes the HTML template and returns the final HTML to the browser
+    return render_template('home.html')# '<h1>Hello, PyMentor!</h1><p>My first Flask app is running!</p><p><a href="/status">Check server status</a></p><p><a href="/contact">Get in contact</a></p>'
 
 # We define another route for the URL '/status'
 @app.route('/status')
