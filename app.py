@@ -7,6 +7,16 @@ import datetime
 app = Flask(__name__)
 app.secret_key = 'your-secret-key-here'  # Needed for future flash messages (error/success notifications)
 
+books = [
+    {'id': 1, 'title': 'The Great Gatsby', 'author': 'F. Scott Fitzgerald', 'status': 'Completed'},
+    {'id': 2, 'title': '1984', 'author': 'George Orwell', 'status': 'To Read'},
+    {'id': 3, 'title': 'To Kill a Mockingbird', 'author': 'Harper Lee', 'status': 'In Progress'},
+    {'id': 4, 'title': 'The Great Gatsby', 'author': 'F. Scott Fitzgerald', 'status': 'To Read'},
+    {'id': 5, 'title': 'Clean Code', 'author': 'Robert C. Martin', 'status': 'completed'},
+    {'id': 6, 'title': 'Python Crash Course', 'author': 'Eric Matthes', 'status': 'to-read'}
+
+]
+
 # The route() decorator tells Flask what URL should trigger the following function.
 # In this case, when a user visits the root URL (i.e., '/'), the home() function will run.
 @app.route('/')
@@ -15,11 +25,11 @@ def home():
     # Here, we are returning a string of HTML. Flask will automatically convert this string into an HTTP response.
 
     current_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    return render_template('home.html', current_time=current_time)
+    return render_template('home.html', current_time=current_time, books=books)
 
     # render_template() is a Flask function that looks in the 'templates' folder
     # It processes the HTML template and returns the final HTML to the browser
-    return render_template('home.html')# '<h1>Hello, PyMentor!</h1><p>My first Flask app is running!</p><p><a href="/status">Check server status</a></p><p><a href="/contact">Get in contact</a></p>'
+   # return render_template('home.html')# '<h1>Hello, PyMentor!</h1><p>My first Flask app is running!</p><p><a href="/status">Check server status</a></p><p><a href="/contact">Get in contact</a></p>'
 
 # We define another route for the URL '/status'
 @app.route('/status')
