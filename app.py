@@ -1,5 +1,6 @@
 # Import the Flask class from the flask module along with render_template class
 from flask import Flask, render_template
+import datetime
 
 # Create an instance of the Flask class. This is our WSGI application.
 # The __name__ argument is the name of the application's module. It helps Flask find resources (like templates and static files).
@@ -12,6 +13,9 @@ app.secret_key = 'your-secret-key-here'  # Needed for future flash messages (err
 def home():
     # This function returns the response we want to send to the client (the browser).
     # Here, we are returning a string of HTML. Flask will automatically convert this string into an HTTP response.
+
+    current_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    return render_template('home.html', current_time=current_time)
 
     # render_template() is a Flask function that looks in the 'templates' folder
     # It processes the HTML template and returns the final HTML to the browser
