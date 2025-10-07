@@ -1,0 +1,39 @@
+<!-- 
+EXTENDS: This template inherits from base.html 
+It gets the entire structure and only replaces the blocks we define
+-->
+{% extends "base.html" %}
+
+<!-- 
+OVERRIDE TITLE BLOCK: Replace the default title with a specific one for this page
+-->
+{% block title %}Contact - Book Tracker{% endblock %}
+
+<!-- 
+CONTENT BLOCK: This replaces the empty 'content' block in base.html
+-->
+{% block content %}
+<!-- Display contact values passed from route (name, email)-->
+<p>Name: {{name}} </p>
+<p>Email: {{email}} </p>
+
+<!-- Using url_for() ensures our links never break even if routes change -->
+<a href="{{ url_for('home') }}">Home</a>
+{% endblock %}
+
+{# 
+  Template: contact.html
+  Purpose: Contact page that extends base.html.
+  Blocks used:
+    - title   -> overrides the page title
+    - content -> main page content
+  Expected context variables (passed from app.py via render_template):
+    - name  (string)  — user's name or display name (recommended lowercase variable name)
+    - email (string)  — contact email address
+  Example render call in app.py:
+    render_template('contact.html', name='Naoman', email='naoman@mymail.com')
+  Notes:
+    - Keep backend logic (routes, form handling) in Python; template should only present data.
+    - Use the Jinja default filter if variable may be missing: {{ name | default('Unknown') }}
+    - When you add a contact form later, handle POST in the route and use Flask-WTF for CSRF.
+#}

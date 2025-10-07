@@ -39,8 +39,12 @@ def status():
 
 @app.route('/contact')
 def contact():
-    # This function returns a dictionary. Flask will automatically convert dictionaries to JSON responses.
-    return {'Name': 'Naoman', 'email': 'naoman@mymail.com'}
+    # CONTACT PAGE ROUTE:
+    # This function renders the 'contact.html' template and passes contact details (name and email) as context variables.
+    # Flask automatically substitutes these variables in the Jinja template before sending the final HTML to the browser.
+    # render_template() looks in the 'templates' folder and injects the provided data into the Jinja placeholders.
+
+    return render_template('contact.html', name='naoman', email='naoman@mymail.com' )  #{'Name': 'Naoman', 'email': 'naoman@mymail.com'}
 
 
 # This condition checks if this script is executed directly (as opposed to being imported).
