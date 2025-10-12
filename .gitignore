@@ -1,4 +1,81 @@
+# ============================================
+# Flask / Python Project .gitignore
+# ============================================
+
+# -----------------------------
+# 1. Python bytecode and caches
+# -----------------------------
 __pycache__/
-*.pyc
-instance/
+*.py[cod]
+*$py.class
+
+# -----------------------------
+# 2. Virtual environments
+# -----------------------------
+venv/
+.venv/
+env/
+ENV/
+
+# -----------------------------
+# 3. Environment and secrets
+# -----------------------------
 .env
+*.env
+instance/
+
+# -----------------------------
+# 4. Build and distribution files
+# -----------------------------
+build/
+dist/
+*.egg-info/
+*.egg
+*.spec
+
+# -----------------------------
+# 5. Logs and temporary files
+# -----------------------------
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# -----------------------------
+# 6. IDE and editor settings
+# -----------------------------
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# -----------------------------
+# 7. OS-specific files
+# -----------------------------
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# -----------------------------
+# 8. Testing and coverage outputs
+# -----------------------------
+.coverage
+htmlcov/
+.tox/
+.pytest_cache/
+nosetests.xml
+coverage.xml
+
+# -----------------------------
+# 9. Jupyter / notebooks (optional)
+# -----------------------------
+.ipynb_checkpoints/
+
+# -----------------------------
+# 10. Miscellaneous
+# -----------------------------
+__pypackages__/
+.cache/
+*.orig
