@@ -1,0 +1,38 @@
+{#
+  Template: status.html
+  Purpose: Display current server status in a user-friendly way.
+  Inherits: base.html (provides layout, nav, and footer)
+  Expected context variables (from app.py):
+    - status (string): general indicator, e.g. "OK" or "Error"
+    - message (string): short descriptive text about server condition
+  Example render call:
+    render_template('status.html', status='OK', message='Server is running smoothly')
+  Notes:
+    - This replaces the earlier JSON response with a human-readable HTML page.
+    - For consistency, variable names are lowercase (status, message).
+    - Future expansion: include additional data like server_time or book_count.
+#}
+
+
+
+{% extends "base.html" %}
+
+{% block title %}Status - Book Tracker{% endblock %}
+
+{% block content %}
+
+
+{# Page heading for user clarity #}
+<h1>Server Status</h1>
+
+{# Display dynamic values passed from Flask route #}
+<p>Status: {{status}} </p>
+<p>Message: {{message}} </p>
+{#
+<p>Checked at: {{ current_time }}</p>
+#}
+
+{# Navigation link back to home page #}
+<a href="{{ url_for('home') }}">Home</a>
+{% endblock %}
+

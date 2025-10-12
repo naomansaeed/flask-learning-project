@@ -35,7 +35,9 @@ def home():
 @app.route('/status')
 def status():
     # This function returns a dictionary. Flask will automatically convert dictionaries to JSON responses.
-    return {'status': 'OK', 'message': 'Server is running smoothly!'}
+    # return {'status': 'OK', 'message': 'Server is running smoothly!'}
+    current_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    return render_template('status.html', status='OK', message='server is running smoothly', current_time=current_time)
 
 @app.route('/contact')
 def contact():
