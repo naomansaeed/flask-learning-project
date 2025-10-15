@@ -1,21 +1,24 @@
 # Import the Flask class from the flask module along with render_template class
 from flask import Flask, render_template
 import datetime
+import json
 
 # Create an instance of the Flask class. This is our WSGI application.
 # The __name__ argument is the name of the application's module. It helps Flask find resources (like templates and static files).
 app = Flask(__name__)
 app.secret_key = 'your-secret-key-here'  # Needed for future flash messages (error/success notifications)
 
-books = [
-    {'id': 1, 'title': 'The Great Gatsby', 'author': 'F. Scott Fitzgerald', 'status': 'Completed'},
-    {'id': 2, 'title': '1984', 'author': 'George Orwell', 'status': 'To Read'},
-    {'id': 3, 'title': 'To Kill a Mockingbird', 'author': 'Harper Lee', 'status': 'In Progress'},
-    {'id': 4, 'title': 'The Great Gatsby', 'author': 'F. Scott Fitzgerald', 'status': 'To Read'},
-    {'id': 5, 'title': 'Clean Code', 'author': 'Robert C. Martin', 'status': 'completed'},
-    {'id': 6, 'title': 'Python Crash Course', 'author': 'Eric Matthes', 'status': 'to-read'}
+with open('data/books.json', 'r') as f:
+ books = json.load(f)
 
-]
+#[
+#    {'id': 1, 'title': 'The Great Gatsby', 'author': 'F. Scott Fitzgerald', 'status': 'Completed'},
+#    {'id': 2, 'title': '1984', 'author': 'George Orwell', 'status': 'To Read'},
+#    {'id': 3, 'title': 'To Kill a Mockingbird', 'author': 'Harper Lee', 'status': 'In Progress'},
+#    {'id': 4, 'title': 'The Great Gatsby', 'author': 'F. Scott Fitzgerald', 'status': 'To Read'},
+#    {'id': 5, 'title': 'Clean Code', 'author': 'Robert C. Martin', 'status': 'completed'},
+#    {'id': 6, 'title': 'Python Crash Course', 'author': 'Eric Matthes', 'status': 'to-read'}
+#]
 
 # The route() decorator tells Flask what URL should trigger the following function.
 # In this case, when a user visits the root URL (i.e., '/'), the home() function will run.
