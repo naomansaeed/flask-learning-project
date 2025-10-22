@@ -1,5 +1,5 @@
 # Import the Flask class from the flask module along with render_template class
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import datetime
 import json
 
@@ -51,6 +51,35 @@ def contact():
 
     return render_template('contact.html', name='naoman', email='naoman@mymail.com' )  #{'Name': 'Naoman', 'email': 'naoman@mymail.com'}
 
+@app.route('/add', methods=['GET', 'POST'])
+def add_book():
+    if request.method == 'POST':
+        title = request.form['title']
+        author = request.form['author']
+        status = request.form['status']
+
+        # Read existing books
+        with open('data/books.json','r') as f:
+            books =json.load(f)
+       #     books.append({books.title})
+
+        # Create a new book entry
+        new_book = {
+            "id": lens(books) + 1,  # simple ID system
+            "title": title,
+            "author": author,
+            "status": status
+        }
+        
+        # Append to the list
+        books.append(new_book)
+        
+        # Save back to JSON
+        with open('data/books.json','w') as f:
+            json.dump(books, f, indent=4)
+    else:
+        # Render the empty form page
+        return render_template('add_book.html')
 
 # This condition checks if this script is executed directly (as opposed to being imported).
 # If it is, then we run the Flask development server.
