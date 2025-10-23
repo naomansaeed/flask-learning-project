@@ -8,8 +8,8 @@ import json
 app = Flask(__name__)
 app.secret_key = 'super-secret-key'  # Needed for future flash messages (error/success notifications)
 
-with open('data/books.json', 'r') as f:
- books = json.load(f)
+#with open('data/books.json', 'r') as f:
+# books = json.load(f)
 
 #[
 #    {'id': 1, 'title': 'The Great Gatsby', 'author': 'F. Scott Fitzgerald', 'status': 'Completed'},
@@ -28,6 +28,12 @@ def home():
     # Here, we are returning a string of HTML. Flask will automatically convert this string into an HTTP response.
 
     current_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+    # ✅ Load fresh data from file each time
+    with open('data/books.json', 'r') as f:
+        books = json.load(f)
+    
+
     return render_template('home.html', current_time=current_time, books=books)
 
     # render_template() is a Flask function that looks in the 'templates' folder
