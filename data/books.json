@@ -1,9 +1,56 @@
 [
-    {"id": 1, "title": "The Great Gatsby", "author": "F. Scott Fitzgerald", "status": "Completed"},
-    {"id": 2, "title": "1984", "author": "George Orwell", "status": "To Read"},
-    {"id": 3, "title": "To Kill a Mockingbird", "author": "Harper Lee", "status": "In Progress"},
-    {"id": 4, "title": "The Great Gatsby", "author": "F. Scott Fitzgerald", "status": "To Read"},
-    {"id": 5, "title": "Clean Code", "author": "Robert C. Martin", "status": "completed"},
-    {"id": 6, "title": "Python Crash Course", "author": "Eric Matthes", "status": "to-read"}
-
+    {
+        "id": 1,
+        "title": "The Great Gatsby",
+        "author": "F. Scott Fitzgerald",
+        "status": "Completed"
+    },
+    {
+        "id": 2,
+        "title": "1984",
+        "author": "George Orwell",
+        "status": "To Read"
+    },
+    {
+        "id": 3,
+        "title": "To Kill a Mockingbird",
+        "author": "Harper Lee",
+        "status": "In Progress"
+    },
+    {
+        "id": 4,
+        "title": "Clean Code",
+        "author": "Robert C. Martin",
+        "status": "completed"
+    },
+    {
+        "id": 5,
+        "title": "Python Crash Course",
+        "author": "Eric Matthes",
+        "status": "to-read"
+    },
+    {
+        "id": 6,
+        "title": "Moby Dick",
+        "author": "Herman Melville",
+        "status": "Read"
+    },
+    {
+        "id": 7,
+        "title": "Frankenstein: or, The Modern Prometheus",
+        "author": "Mary Shelley",
+        "status": "Read"
+    },
+    {
+        "id": 8,
+        "title": "Dracula",
+        "author": "Bram Stoker",
+        "status": "Read"
+    },
+    {
+        "id": 9,
+        "title": "Alice's Adventures in Wonderland",
+        "author": "Lewis Carroll",
+        "status": "Read"
+    }
 ]

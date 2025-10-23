@@ -1,12 +1,12 @@
 # Import the Flask class from the flask module along with render_template class
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for, flash
 import datetime
 import json
 
 # Create an instance of the Flask class. This is our WSGI application.
 # The __name__ argument is the name of the application's module. It helps Flask find resources (like templates and static files).
 app = Flask(__name__)
-app.secret_key = 'your-secret-key-here'  # Needed for future flash messages (error/success notifications)
+app.secret_key = 'super-secret-key'  # Needed for future flash messages (error/success notifications)
 
 with open('data/books.json', 'r') as f:
  books = json.load(f)
@@ -62,10 +62,17 @@ def add_book():
         with open('data/books.json','r') as f:
             books =json.load(f)
        #     books.append({books.title})
+        
+
+        if books:
+            max_id = max(book['id'] for book in books)
+        else:
+            max_id = 0
+        
 
         # Create a new book entry
         new_book = {
-            "id": lens(books) + 1,  # simple ID system
+            "id": max_id + 1,  # simple ID system
             "title": title,
             "author": author,
             "status": status
@@ -77,6 +84,9 @@ def add_book():
         # Save back to JSON
         with open('data/books.json','w') as f:
             json.dump(books, f, indent=4)
+
+        flash('Book added successfully!')
+        return redirect(url_for('home'))  # ✅ now Flask knows what to do
     else:
         # Render the empty form page
         return render_template('add_book.html')
