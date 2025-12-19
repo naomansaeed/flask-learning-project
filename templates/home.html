@@ -23,6 +23,7 @@ CONTENT BLOCK: This replaces the empty 'content' block in base.html
     <li>
         <strong>{{ book.title }}</strong> by {{ book.author }} 
         - <em>{{ book.status }}</em>
+        <a href="{{ url_for('delete_book', id=book.id) }}">Delete</a>
     </li>
     {% endfor %}
 </ul>

@@ -96,6 +96,20 @@ def add_book():
     else:
         # Render the empty form page
         return render_template('add_book.html')
+# --------------------------------------------------
+# Route: /delete/<id>
+# Purpose: Remove a book record by its ID
+# Method: GET (simple link trigger)
+# --------------------------------------------------
+@app.route('/delete/<int:id>')
+def delete_book(id):
+    pass
+    # Load books
+    # Find the one with matching ID
+    # Remove it
+    # Save back to JSON
+    # Flash message
+    # Redirect home
 
 # This condition checks if this script is executed directly (as opposed to being imported).
 # If it is, then we run the Flask development server.
