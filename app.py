@@ -107,9 +107,20 @@ def delete_book(id):
     # Load books
     with open('data/books.json', 'r') as f:
         books = json.load(f)
+    
+    
+    # pro gamer way to delete
+    # books = [book for book in books if book['id'] != id]
+
+    # normie / noob way to delete
+    new_books = []
     # Find the one with matching ID
-    # Remove it
-    books = [book for book in books if book['id'] != id]
+    for book in books:
+        # Remove it
+        if book['id'] != id:
+            new_books.append(book)
+    books = new_books
+
     # Save back to JSON
     with open('data/books.json', 'w') as f:
         json.dump(books, f, indent=4)
