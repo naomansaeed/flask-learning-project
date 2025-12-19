@@ -103,13 +103,20 @@ def add_book():
 # --------------------------------------------------
 @app.route('/delete/<int:id>')
 def delete_book(id):
-    pass
+    #pass
     # Load books
+    with open('data/books.json', 'r') as f:
+        books = json.load(f)
     # Find the one with matching ID
     # Remove it
+    books = [book for book in books if book['id'] != id]
     # Save back to JSON
+    with open('data/books.json', 'w') as f:
+        json.dump(books, f, indent=4)
     # Flash message
+    flash('Book deleted Successfully')
     # Redirect home
+    return redirect(url_for('home'))
 
 # This condition checks if this script is executed directly (as opposed to being imported).
 # If it is, then we run the Flask development server.
